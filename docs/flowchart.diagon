@@ -1,0 +1,20 @@
+"START";
+"Usage: py joylibz.py <story-name>";
+
+if ("template file for story-name exists?") {
+  "open template file";
+  if ("joylibs.db exists?") {
+    "Open joylibs.db";
+  } else {
+    "Create joylibs.db tables";
+    "Parse word list text files and insert into tables";
+    "Parse word list text files and insert into tables";
+  }
+  do {
+    "call randword(pos, category) to fill template with random word given a Part-of-Speech (POS) (such as noun, verb, adjective) and a category (e.g body parts, sports, food, etc.)";
+  } while ("template has placeholder")
+  "Print the MadLib: text that now contains the template having placeholders replaced with random words";
+} else {
+  "Error: Unknown story-name";
+}
+"END";

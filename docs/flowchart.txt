@@ -1,0 +1,54 @@
+        ┌─────┐                                                            
+        │START│                                                            
+        └──┬──┘                                                            
+┌──────────▽─────────┐                                                     
+│Usage: py joylibz.py│                                                     
+│<story-name>        │                                                     
+└──────────┬─────────┘                                                     
+   ________▽_________                                                      
+  ╱                  ╲           ┌──────────────────┐                      
+ ╱ template file for  ╲__________│open template file│                      
+ ╲ story-name exists? ╱yes       └─────────┬────────┘                      
+  ╲__________________╱             ________▽_________                      
+           │no                    ╱                  ╲    ┌───────────────┐
+   ┌───────▽──────┐              ╱ joylibs.db exists? ╲___│Open joylibs.db│
+   │Error: Unknown│              ╲                    ╱yes└───────┬───────┘
+   │story-name    │               ╲__________________╱            │        
+   └───────┬──────┘                        │no                    │        
+           │                      ┌────────▽────────┐             │        
+           │                      │Create joylibs.db│             │        
+           │                      │tables           │             │        
+           │                      └────────┬────────┘             │        
+           │                 ┌─────────────▽────────────┐         │        
+           │                 │Parse word list text files│         │        
+           │                 │and insert into tables    │         │        
+           │                 └─────────────┬────────────┘         │        
+           │                 ┌─────────────▽────────────┐         │        
+           │                 │Parse word list text files│         │        
+           │                 │and insert into tables    │         │        
+           │                 └─────────────┬────────────┘         │        
+           │                               └─────┬────────────────┘        
+           │                                     │                         
+           │                                     │◁──────────────────────╮ 
+           │              ┌──────────────────────┴──────────────────────┐│ 
+           │              │call randword(pos, category) to fill template││ 
+           │              │with random word given a Part-of-Speech (POS)││ 
+           │              │(such as noun, verb, adjective) and a        ││ 
+           │              │category (e.g body parts, sports, food, etc.)││ 
+           │              └──────────────────────┬──────────────────────┘│ 
+           │                                _____▽______                 │ 
+           │                               ╱            ╲                │ 
+           │                              ╱ template has ╲_______________│ 
+           │                              ╲ placeholder  ╱yes              
+           │                               ╲____________╱                  
+           │                                     │no                       
+           │                 ┌───────────────────▽───────────────────┐     
+           │                 │Print the MadLib: text that now        │     
+           │                 │contains the template having           │     
+           │                 │placeholders replaced with random words│     
+           │                 └───────────────────┬───────────────────┘     
+           └─────────┬───────────────────────────┘                         
+                   ┌─▽─┐                                                   
+                   │END│                                                   
+                   └───┘                                                   
+
