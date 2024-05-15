@@ -1,0 +1,5 @@
+#ignore VS code project directories
+.vscode
+
+#ignore Mac temporary directories
+.DS_Store
