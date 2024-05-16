@@ -1,6 +1,6 @@
 word,topic,plural
-adult,perosn,0
-african,places,0
+adult,person,0
+African,places,0
 apples,fruits,1
 banana,fruits,0
 beds,things,1
@@ -14,7 +14,7 @@ chair,things,0
 cheetah,animals,0
 deer,animals,0
 desk,things,0
-docters,jobs,1
+doctor,jobs,1
 donkey,animals,0
 doors,things,1
 eggs,foods,1
