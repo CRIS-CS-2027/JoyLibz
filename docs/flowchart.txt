@@ -38,7 +38,7 @@
            │                                     │                         
            │                                     │◁──────────────────────╮ 
            │              ┌──────────────────────┴──────────────────────┐│ 
-           │              │call randword(pos, category) to fill template││ 
+           │              │call randword(pos, topic) to fill template   ││ 
            │              │with random word given a Part-of-Speech (POS)││ 
            │              │(such as noun, verb, adjective) and a        ││ 
            │              │category (e.g body parts, sports, food, etc.)││ 
