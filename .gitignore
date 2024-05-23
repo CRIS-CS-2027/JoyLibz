@@ -3,3 +3,6 @@
 
 #ignore Mac temporary directories
 .DS_Store
+
+# python cached files
+__pycache__
