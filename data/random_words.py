@@ -5,11 +5,11 @@ import random
 # TODO: this data will be queried from a database
 words = {
     'adj': [
-        ('funny', '', False),
-        ('yellow', 'colors', False),
-        ('slow', '', False),
-        ('scary', '', False),
-        ('ugly', '', False)
+        ('funny', 'positive', None),
+        ('yellow', 'neutral', None),
+        ('slow', 'negative', None),
+        ('scary', 'negative', None),
+        ('ugly', 'negative', None)
     ],
     'noun': [
         ('tent', 'camping', False),
@@ -26,6 +26,13 @@ words = {
         ('Pluto', 'place', False),
         ('Hawaii', 'place', False),
         ('Tokyo', 'place', False),
+    ],
+    'verb': [
+        ('run', 'action', None),
+        ('walk', 'action', None),
+        ('jump', 'action', None),
+        ('run', 'action', None),
+        ('must', 'helping', None),
     ]
 }
 
