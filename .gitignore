@@ -6,3 +6,6 @@
 
 # python cached files
 __pycache__
+
+# vi swap files
+.*.swp
