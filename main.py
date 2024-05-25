@@ -12,6 +12,6 @@ def get_word_list(filename):
             words_list += [row]
         return words_list
 
-my_list = get_word_list("words-lists/nouns.csv")
-
-print(my_list)
+if __name__ == '__main__':
+    my_list = get_word_list("words-lists/nouns.csv")
+    print(my_list)
