@@ -1,40 +1,63 @@
 import random
+import os
+import sys
+from data.word_lists import get_word_list
 
 # test dictionary of
 # pos => [(word, topic, plural), ...]
-# TODO: this data will be queried from a database
-words = {
-    'adj': [
-        ('funny', 'positive', None),
-        ('yellow', 'neutral', None),
-        ('slow', 'negative', None),
-        ('scary', 'negative', None),
-        ('ugly', 'negative', None)
-    ],
-    'noun': [
-        ('tent', 'camping', False),
-        ('cake', 'food', False),
-        ('uncle', 'family', False),
-        ('car', 'transportation', False),
-        ('poster', 'decorations', False),
-        ('leg', 'body_parts', False),
-        ('head', 'body_parts', False),
-        ('ears', 'body_parts', True),
-        ('Taj-Mahal', 'place', False),
-        ('Chiang Rai', 'place', False),
-        ('Moon', 'place', False),
-        ('Pluto', 'place', False),
-        ('Hawaii', 'place', False),
-        ('Tokyo', 'place', False),
-    ],
-    'verb': [
-        ('run', 'action', None),
-        ('walk', 'action', None),
-        ('jump', 'action', None),
-        ('run', 'action', None),
-        ('must', 'helping', None),
-    ]
-}
+# words = {
+#     'adj': [
+#         ('funny', 'positive', None),
+#         ('yellow', 'neutral', None),
+#         ('slow', 'negative', None),
+#         ('scary', 'negative', None),
+#         ('ugly', 'negative', None)
+#     ],
+#     'noun': [
+#         ('tent', 'camping', False),
+#         ('cake', 'food', False),
+#         ('uncle', 'family', False),
+#         ('car', 'transportation', False),
+#         ('poster', 'decorations', False),
+#         ('leg', 'body_parts', False),
+#         ('head', 'body_parts', False),
+#         ('ears', 'body_parts', True),
+#         ('Taj-Mahal', 'place', False),
+#         ('Chiang Rai', 'place', False),
+#         ('Moon', 'place', False),
+#         ('Pluto', 'place', False),
+#         ('Hawaii', 'place', False),
+#         ('Tokyo', 'place', False),
+#     ],
+#     'verb': [
+#         ('run', 'action', None),
+#         ('walk', 'action', None),
+#         ('jump', 'action', None),
+#         ('run', 'action', None),
+#         ('must', 'helping', None),
+#     ]
+# }
+
+def all_words_dict():
+    '''
+    returns dictionary of word lists as:
+    {
+      'noun': [(word, topic, plural), ...],
+      'verb': [(word, topic, plural), ...],
+      'adj': [(word, topic, plural), ...]
+    }
+    '''
+    current = os.path.dirname(os.path.realpath(__file__))
+    parent = os.path.dirname(current)
+    word_lists_dir = parent + '/words-lists/'
+    words = {}
+    words['noun'] = get_word_list(f'{word_lists_dir}/nouns.csv', 'tuple')
+    words['verb'] = get_word_list(f'{word_lists_dir}/verbs.csv', 'tuple')
+    words['adj'] = get_word_list(f'{word_lists_dir}/adjectives.csv', 'tuple')
+    return words
+
+
+words = all_words_dict()
 
 # set of words chosen already
 chosen = set()
@@ -65,7 +88,7 @@ def randword(pos, topic=None, plural=None):
         else:
             recurs = []
             chosen.add(word)
-            return word
+            return f'<{word}>'
 
     # list of words given pos
     pos_words = words[pos]

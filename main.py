@@ -1,17 +1,61 @@
-import csv
+import os
+import os.path
+import sys
+import importlib
 
-def get_word_list(filename):
-    """
-    A function that opens a CSV file and returns a list of dictionaries of data
-    """
-    with open(filename, encoding ='utf-8') as words:
-        words_list = []
-        reader = csv.DictReader(words, skipinitialspace=True)
-        for row in reader:
-            row['plural'] = bool(int(row['plural']))
-            words_list += [row]
-        return words_list
+def path_fname(path):
+    '''returns the filename part of a path'''
+    #  basename("/head/tail") returns "tail"
+    return os.path.basename(path)
 
-my_list = get_word_list("words-lists/nouns.csv")
+def warn(*args, **kwargs):
+    '''print args to stderr'''
+    print(*args, file=sys.stderr, **kwargs)
 
-print(my_list)
+def die(*args, **kwargs):
+    '''print args to stderr and exit 1'''
+    warn(*args, **kwargs)
+    sys.exit(1)
+
+def story_names():
+    '''returns a list of mad lib template names without the .py extension'''
+    stories = []
+    for d in os.listdir('templates/'):
+        if d[-3:].lower() == '.py':
+            stories.append(d[0:-3])
+    return stories
+
+def usage():
+    '''print command line usage information and exit process'''
+    prg = path_fname(sys.argv[0])
+    msg  = f'usage: py {prg} <-l|story_name>\n'
+    msg +=  '  -l : list all story names\n'
+    msg +=  '  story_name : name of mad lib template'
+    die(msg)
+
+def main():
+    '''entry point of command line program'''
+    if len(sys.argv) != 2:
+        usage()  # exits w/ err code 1 
+
+    # two valid values of first argument: -l or <story_name>
+    arg1 = sys.argv[1]
+
+    # -l : list story names
+    if arg1 == '-l':
+        for s in story_names():
+            print(s)
+        return
+
+    # arg not '-l', so it's a story name
+    if arg1 in story_names():
+        fpath = f'templates/{arg1}.py'
+        if not os.path.isfile(fpath):
+            die(f'no such template file: {fpath}')
+        template = importlib.import_module(f'templates.{arg1}')
+        print(template.mad_text)
+    else:
+        die(f'invalid story name: {arg1}\nUse `-l` option to list story names.')
+
+if __name__ == '__main__':
+    main()
