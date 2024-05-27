@@ -12,3 +12,5 @@ They will look at your {randword('noun','body_parts')}, {randword('noun','body_p
 Sometimes, they can be very {randword('adj')} . Afterwards, they will give you a {randword('noun')}
  and a {randword('noun')} and your mom or dad will take you to {randword('noun')}
  as a treat. All in all, the doctor's office isn't so {randword('adj')}!'''
+
+print(mad_text)
