@@ -2,6 +2,7 @@ import random
 import os
 import sys
 from data.word_lists import get_word_list
+from data.utils import warn
 
 # test dictionary of
 # pos => [(word, topic, plural), ...]
@@ -97,12 +98,15 @@ def randword(pos, topic=None, plural=None):
     if plural != None:
         tpws = [tp for tp in pos_words if topic == tp[1] and bool(plural) == bool(tp[2])]
         # matches POS, topic and plural
-        return choose(random.choice(tpws)[0])
+        if len(tpws):
+            return choose(random.choice(tpws)[0])
 
     if topic:
         topic_words = [tp for tp in pos_words if topic == tp[1]]
         if len(topic_words) != 0:
             return choose(random.choice(topic_words)[0])
+        else:
+            warn(f'no word lists for pos and topic: {pos} {topic}')
 
     # if no topic words, fall back on random word with same POS
     return choose(random.choice(pos_words)[0])

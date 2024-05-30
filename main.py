@@ -2,20 +2,7 @@ import os
 import os.path
 import sys
 import importlib
-
-def path_fname(path):
-    '''returns the filename part of a path'''
-    #  basename("/head/tail") returns "tail"
-    return os.path.basename(path)
-
-def warn(*args, **kwargs):
-    '''print args to stderr'''
-    print(*args, file=sys.stderr, **kwargs)
-
-def die(*args, **kwargs):
-    '''print args to stderr and exit 1'''
-    warn(*args, **kwargs)
-    sys.exit(1)
+from data.utils import warn, die, path_fname
 
 def story_names():
     '''returns a list of mad lib template names without the .py extension'''
