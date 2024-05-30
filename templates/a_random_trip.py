@@ -9,5 +9,3 @@ mad_text = f'''Candy loves to {randword('verb', 'action')} at the {randword('nou
 They would {randword('verb', 'action')} the {randword('adj')} {randword('noun')} and {randword('verb', 'action')} the {randword('noun', 'True')}.
 Everytime they go there, Amy will {randword('verb')} at the {randword('noun', 'animals')}.
 That's why you should always go secretly.'''
-
-print(mad_text)

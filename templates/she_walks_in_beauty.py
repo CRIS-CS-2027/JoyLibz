@@ -14,5 +14,3 @@ Of {randword('adj', 'action')} climes and {randword('adj', '')} skies
 And all that’s {randword('adj', 'action')} of {randword('adj', '')} and {randword('adj', 'action')}
 Meet in her aspect and her {randword('noun', 'body_parts')} Thus mellowed to that tender {randword('noun', '')}
 Which heaven to {randword('adj', 'action')} {randword('noun', '')} denies.'''
-
-print(mad_text)
